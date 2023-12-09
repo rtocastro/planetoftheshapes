@@ -20,3 +20,17 @@ const questions = [
         message: 'Enter color or hex code to add color to logo...'
     },
 ];
+
+function writeToFile(fileName, data){
+    fs.writeFile(fileName, data, (err,result)=>{
+        if (err) throw err;
+        console.log('Logo has been made')
+    })
+}
+
+function start(){
+    inquirer.prompt(questions)
+    .then((answers)=> {
+        writeToFile('samplelogo.svg',??????? )
+    })
+}
