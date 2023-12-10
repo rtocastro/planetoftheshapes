@@ -1,7 +1,7 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
 const shapes = ["Triangle", "Circle", "Square"]
-const { Circle } = require('./lib/shapes')
+const { Circle, Square, Triangle } = require('./lib/shapes')
 
 const questions = [
 
@@ -13,7 +13,7 @@ const questions = [
     {
         type: 'list',
         name: 'choice',
-        message: " Please choose a shape from the list",
+        message: "Please choose a shape from the list",
         choices: shapes
     },
     {
@@ -40,13 +40,17 @@ function start() {
         .then((answers) => {
             let shape;
 
-            if (answers.choice === 'Circle'){
+            if (answers.choice === 'Circle') {
                 shape = new Circle(answers.letters, answers.colortext, answers.colorshape)
+            } else if (answers.choice === 'Square') {
+                shape = new Square(answers.letters, answers.colortext, answers.colorshape)
+            } else if (answers.choice === 'Triangle') {
+                shape = new Triangle(answers.letters, answers.colortext, answers.colorshape)
             }
 
 
 
-            writeToFile('logo.svg',shape.render());
+            writeToFile('logo.svg', shape.render());
         })
 }
 
